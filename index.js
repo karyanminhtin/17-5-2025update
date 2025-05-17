@@ -25,18 +25,6 @@ const allowedOrigins = [
 ];
 console.log(allowedOrigins);
 
-// const checkDomain = (req, res, next) => {
-//   const origin = req.get('origin') || req.get('referer');
-  
-//   if (allowedOrigins.includes(origin)) {
-//      next();
-//   } else {
-//     return res.status(403).json({ error: 'Access forbidden' });
-//   }
-// };
-
-// app.use(checkDomain);
-
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -48,7 +36,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 /**
  * Middleware to prevent caching of responses
